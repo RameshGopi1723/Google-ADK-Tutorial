@@ -26,7 +26,7 @@ async def main(query):
 
     # create memory session 
     session_serivce = InMemorySessionService()
-    session_serivce.create_session(app_name= APP_NAME, user_id=USER_ID, session_id=SESSION_ID)
+    await session_serivce.create_session(app_name= APP_NAME, user_id=USER_ID, session_id=SESSION_ID)
     
     # get the agent 
     root_agent = await get_agent()
