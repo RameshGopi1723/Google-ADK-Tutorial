@@ -2,6 +2,19 @@ from google.adk.agents import LlmAgent
 from pydantic import BaseModel, Field
 
 
+# --- Define Input Schema ---
+# class EmailRequest(BaseModel):
+#     recipient: str = Field(
+#         description="The name or role of the email recipient (e.g., 'Project Manager', 'Client')."
+#     )
+#     purpose: str = Field(
+#         description="The main purpose of the email (e.g., 'requesting information', 'scheduling a meeting')."
+#     )
+#     tone: str = Field(
+#         description="The desired tone of the email (e.g., 'formal', 'friendly', 'urgent')."
+#     )
+
+
 # --- Define Output Schema ---
 class EmailContent(BaseModel):
     subject: str = Field(
@@ -40,6 +53,7 @@ root_agent = LlmAgent(
 
         DO NOT include any explanations or additional text outside the JSON response.
     """,
+    # input_schema=EmailRequest,
     output_schema=EmailContent,
     output_key="email",
 )
