@@ -3,6 +3,7 @@ from google.adk.tools.tool_context import ToolContext
 from dotenv import load_dotenv
 import requests
 from google.adk.apps import App, ResumabilityConfig
+from tools import after_agent_callback
 
 
 # load environment variables 
@@ -56,8 +57,8 @@ root_agent = LlmAgent(
     description="This is my first agent",
     instruction="You are a helpful assistant.",
     model="gemini-2.0-flash",
-    tools = [get_weather]
-    
+    tools = [get_weather],
+    after_agent_callback=after_agent_callback
 )
 
 app = App(
